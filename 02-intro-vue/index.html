@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hola Mundo en Vue</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola Mundo en Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Variables</h2>
+      <h3>{{message}}</h3>
+      <blockquote>- {{author}}</blockquote>
 
-  <div id="app">
-    <h2>Variables</h2>
-    <h3>{{message}}</h3>
-    <blockquote>- {{author}}</blockquote>
+      <button v-on:click="changeMessage">Cambiar mensaje</button>
 
-    <button v-on:click="changeMessage">Cambiar mensaje</button>
+      <hr />
 
-    <hr>
+      <h2>Iterar elementos</h2>
+      <h5>Batman quotes {{totalQuotes}}</h5>
+      <input type="text" placeholder="Add quote" @keypress.enter="addQuote" v-model="newMessage" />
+      <br /><br />
 
-    <h2>Iterar elementos</h2>
-    <h5>Batman quotes {{totalQuotes}}</h5>
-    <input type="text" placeholder="Add quote" @keypress.enter="addQuote">
-    <br><br>
+      <button v-on:click="toggleAuthor">Toggle author</button>
+      <button v-on:click="addQuote">Add author</button>
+      <ul>
+        <li v-for="({quote, author}, index) in quotes">
+          <span>{{index + 1}} - {{quote}}</span>
+          <blockquote v-if="showAuthor">- {{author}}</blockquote>
+        </li>
+      </ul>
+    </div>
 
-    <button v-on:click="toggleAuthor">Toggle author</button>
-    <button v-on:click="addQuote">Add author</button>
-    <ul>
-      <li v-for="({quote, author}, index) in quotes">
-        <span>{{index + 1}} - {{quote}}</span>
-        <blockquote v-if="showAuthor">- {{author}}</blockquote>
-      </li>
-    </ul>
-  </div>
-
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="app.js"></script>
-</body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>

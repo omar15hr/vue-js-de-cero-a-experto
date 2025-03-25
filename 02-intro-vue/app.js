@@ -41,8 +41,10 @@ const app = createApp({
     const message = ref("I'm Batman");
     const author = ref("Bruce Wayne");
 
-    const showAuthor = ref(true);
+    const showAuthor = ref(false);
     const quotes = ref(originalQuotes);
+    const newMessage = ref("");
+
     const totalQuotes = computed(() => {
       return quotes.value.length;
     });
@@ -57,10 +59,14 @@ const app = createApp({
     };
 
     const addQuote = () => {
+      if (!newMessage.value) return;
+
       quotes.value.unshift({
-        quote: "I'm Batman",
+        quote: newMessage.value,
         author: "Bruce Wayne",
       });
+
+      newMessage.value = "";
     };
 
     return {
@@ -72,6 +78,7 @@ const app = createApp({
       toggleAuthor,
       addQuote,
       totalQuotes,
+      newMessage,
     };
   },
 });
