@@ -38,12 +38,18 @@ const app = createApp({
     const message = ref("I'm Batman");
     const author = ref("Bruce Wayne");
 
+    const showAuthor = ref(true);
+
     const changeMessage = () => {
       message.value = "I'm Ironman";
       author.value = "Tony Stark";
     };
 
-    return { message, author, changeMessage, quotes };
+    const toggleAuthor = () => {
+      showAuthor.value = !showAuthor.value;
+    };
+
+    return { message, author, changeMessage, quotes, showAuthor, toggleAuthor };
   },
 });
 
