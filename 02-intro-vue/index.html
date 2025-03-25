@@ -8,10 +8,22 @@
 <body>
 
   <div id="app">
+    <h2>Variables</h2>
     <h3>{{message}}</h3>
     <blockquote>- {{author}}</blockquote>
 
     <button v-on:click="changeMessage">Cambiar mensaje</button>
+
+    <hr>
+
+    <h2>Iterar elementos</h2>
+    <h5>Batman quotesf</h5>
+    <ul>
+      <li v-for="({quote, author}, index) in quotes">
+        <span>{{index + 1}} - {{quote}}</span>
+        <blockquote>- {{author}}</blockquote>
+      </li>
+    </ul>
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
