@@ -17,8 +17,12 @@
     <hr>
 
     <h2>Iterar elementos</h2>
-    <h5>Batman quotes</h5>
+    <h5>Batman quotes {{totalQuotes}}</h5>
+    <input type="text" placeholder="Add quote" @keypress.enter="addQuote">
+    <br><br>
+
     <button v-on:click="toggleAuthor">Toggle author</button>
+    <button v-on:click="addQuote">Add author</button>
     <ul>
       <li v-for="({quote, author}, index) in quotes">
         <span>{{index + 1}} - {{quote}}</span>

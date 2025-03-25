@@ -1,8 +1,9 @@
-const { createApp, ref } = Vue;
+const { createApp, ref, computed } = Vue;
 
-const quotes = [
+const originalQuotes = [
   {
-    quote: "The night is darkest just before the dawn. And I promise you, the dawn is coming.",
+    quote:
+      "The night is darkest just before the dawn. And I promise you, the dawn is coming.",
     author: "Harvey Dent, The Dark Knight",
   },
   {
@@ -10,11 +11,13 @@ const quotes = [
     author: "The Joker, The Dark Knight",
   },
   {
-    quote: "Your anger gives you great power. But if you let it, it will destroy you… As it almost did me",
+    quote:
+      "Your anger gives you great power. But if you let it, it will destroy you… As it almost did me",
     author: "Henri Ducard, Batman Begins",
   },
   {
-    quote: "You either die a hero or live long enough to see yourself become the villain.",
+    quote:
+      "You either die a hero or live long enough to see yourself become the villain.",
     author: "Harvey Dent, The Dark Knight",
   },
   {
@@ -39,6 +42,10 @@ const app = createApp({
     const author = ref("Bruce Wayne");
 
     const showAuthor = ref(true);
+    const quotes = ref(originalQuotes);
+    const totalQuotes = computed(() => {
+      return quotes.value.length;
+    });
 
     const changeMessage = () => {
       message.value = "I'm Ironman";
@@ -49,7 +56,23 @@ const app = createApp({
       showAuthor.value = !showAuthor.value;
     };
 
-    return { message, author, changeMessage, quotes, showAuthor, toggleAuthor };
+    const addQuote = () => {
+      quotes.value.unshift({
+        quote: "I'm Batman",
+        author: "Bruce Wayne",
+      });
+    };
+
+    return {
+      message,
+      author,
+      changeMessage,
+      quotes,
+      showAuthor,
+      toggleAuthor,
+      addQuote,
+      totalQuotes,
+    };
   },
 });
 
