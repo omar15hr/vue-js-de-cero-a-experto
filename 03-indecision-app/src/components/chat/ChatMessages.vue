@@ -20,12 +20,15 @@ interface Props {
   messages: ChatMessage[];
 }
 
-const {messages} = defineProps<Props>();
-const getMessage = computed(() => messages);
+// const {messages} = defineProps<Props>();
+// const getMessage = computed(() => messages);
+
+const props = defineProps<Props>();
 
 const chatRef = ref<HTMLDivElement|null>(null);
 
-watch(getMessage.value, () => {
+watch(props, () => {
+  console.log('se disparó el update de messages');
   setTimeout(() => {
     chatRef.value?.scrollTo({
       top: chatRef.value?.scrollHeight,
