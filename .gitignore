@@ -6,3 +6,7 @@
 /.env
 .cursorrules
 .cursor
+
+# Cursor files
+.cursor/
+.cursorrules
