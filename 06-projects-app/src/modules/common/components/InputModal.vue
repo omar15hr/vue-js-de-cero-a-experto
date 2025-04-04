@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 
 interface Props {
   open: boolean;
@@ -30,7 +30,7 @@ interface Props {
   subtitle?: string;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emits = defineEmits<{
   close: [void];
@@ -39,6 +39,14 @@ const emits = defineEmits<{
 
 const inputValue = ref('');
 const inputRef = ref<HTMLInputElement | null>(null);
+
+watch(() => props.open, (newOpen) => {
+  if (newOpen) {
+    nextTick(() => {
+      inputRef.value?.focus();
+    });
+  }
+});
 
 const submitValue = () => {
   if (!inputValue.value) {
