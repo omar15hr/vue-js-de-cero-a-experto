@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <TopMenu />
-    <main>
+    <main class="flex">
       <SideMenu />
       <RouterView />
     </main>
