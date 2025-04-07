@@ -3,8 +3,13 @@
 /node_modules
 
 postgres/
-
 .env
+
+# Ignorar solo src/static
+/src/static/
+
+# Asegurar que src y demás contenido no se ignoren
+!src/
 
 
 # Logs

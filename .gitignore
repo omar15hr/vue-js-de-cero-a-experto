@@ -6,6 +6,7 @@
 /.env
 .cursorrules
 .cursor
+/07-backend-teslo-shop
 
 # Cursor files
 .cursor/
